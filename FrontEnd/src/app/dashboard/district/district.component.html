@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="col col-md-4 mt-5">
+    <div class="card">
+      <div class="add p-4">
+        <div
+        *ngIf="alertMsg"
+        class="alert alert-success alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>{{ submitInfo }}</strong>
+        <button (click)="close()"
+          type="button"
+          class="close"
+        >X</button>
+      </div>
+        <form [formGroup]="districtForm" (ngSubmit)="AddDistrict()">
+          <div class="form-group mb-3">
+            <label for="state">Enter Your District</label>
+            <input type="text" class="form-control" placeholder="state" formControlName="district">
+            <p class="invalid" *ngIf="!districtForm.get('district').valid && districtForm.get('district').touched">District is required</p>
+          </div>
+          <button type="submit" [disabled]="districtForm.invalid" class="btn btn-primary">Add District</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <h4>All Districts List!</h4>
+  <div class="state-details mt-4">
+    <div *ngFor="let item of userDetails; let i=index">
+      <div class="state">
+        <h4 class="paddinf-left">{{i+1}}. </h4>
+        <h4 class="paddinf-left">{{item.district}} </h4>
+      </div>
+    </div>
+  </div>
+</div>

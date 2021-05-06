@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="col col-md-4 mt-5">
+    <div class="card">
+      <div class="add p-5">
+        <div
+        *ngIf="alertMsg"
+        class="alert alert-success alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>{{ submitInfo }}</strong>
+        <button (click)="close()"
+          type="button"
+          class="close"
+        >X</button>
+      </div>
+        <form [formGroup]="stateForm" (ngSubmit)="createState()">
+          <div class="form-group mb-3">
+            <label for="state">Enter Your State</label>
+            <input type="text" class="form-control" placeholder="state" formControlName="state">
+            <p class="invalid" *ngIf="stateForm.get('state').invalid && stateForm.get('state').touched">State is required</p>
+          </div>
+          <button type="submit" [disabled]="stateForm.invalid" class="btn btn-primary">Add State</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <h4>State Lists Here!</h4>
+  <div class="state-details mt-4">
+    <div *ngFor="let item of FetchedDta; let i = index">
+      <div class="state">
+        <h4 class="paddinf-left">{{i+1}}. </h4>
+        <h4 class="paddinf-left">{{item.state}} </h4>
+      </div>
+    </div>
+  </div>
+</div>

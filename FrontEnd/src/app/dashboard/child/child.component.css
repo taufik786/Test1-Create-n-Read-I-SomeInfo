@@ -1,0 +1,24 @@
+.hr-color{
+  display: flex;
+}
+hr{
+  height: 3px;
+  width: 50%;
+}
+.hr-red{
+  background-color: red;
+  color: red;
+}
+.hr-green{
+  background-color: green;
+}
+.hr-blue{
+  background-color: blue;
+}
+.close{
+  position: absolute;
+  right: 10px;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+}

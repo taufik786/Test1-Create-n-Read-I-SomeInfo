@@ -1,0 +1,15 @@
+li > a{
+  color: white;
+  cursor: pointer;
+  padding: auto 30px;
+  font-size: 1.1rem;
+  display: block;
+}
+li a:hover{
+  color: black;
+  background-color: tomato;
+}
+.logout{
+  padding-left: 50px;
+  padding-right: 100px;
+}

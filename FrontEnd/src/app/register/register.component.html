@@ -1,0 +1,36 @@
+<nav class="nav bg-dark">
+<p>hi there it will not show</p>
+</nav>
+<div class="container">
+  <div class="d-flex justify-content-center mt-5">
+
+    <div class="col col-md-5 bg-color">
+      <form class="p-5" [formGroup]="registerForm" (ngSubmit)="register()">
+        <h4 class="text-center pb-3">Register An Account</h4>
+        <div class="alert alert-danger" role="alert" *ngIf="show">
+          {{alertMsg}}
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+          <p class="invalid" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">Email must be valid</p>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+          <p class="invalid" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">Password Should be 5 charactors</p>
+        </div>
+        <div class="mb-3">
+          <label for="cnfpassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" placeholder="Enter confirm password" formControlName="cnfpassword">
+          <p class="invalid" *ngIf="registerForm.errors">Password does not match</p>
+        </div>
+        <p>Already Have Account? <a routerLink="/login">Login Here</a> </p>
+        <div class="d-grid gap-2">
+          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
