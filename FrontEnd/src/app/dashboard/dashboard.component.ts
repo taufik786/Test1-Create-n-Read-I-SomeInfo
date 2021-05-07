@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  public isMenuCollapsed = true;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {

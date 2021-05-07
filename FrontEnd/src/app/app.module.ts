@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { AccumulationChartModule, PieSeriesService } from '@syncfusion/ej2-angular-charts';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { AccumulationChartModule, PieSeriesService } from '@syncfusion/ej2-angul
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    DashboardModule,
-    AccumulationChartModule
+    // DashboardModule,
+    AccumulationChartModule,
+    NgbModule
 
   ],
   bootstrap: [AppComponent],

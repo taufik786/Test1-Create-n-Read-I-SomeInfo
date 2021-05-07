@@ -13,8 +13,9 @@ export class ChildComponent implements OnInit {
   childForm: FormGroup;
   alertMsg= false
   submitInfo: any;
-  userDetails: any;
+  userDetails: [];
   socket: any;
+  showSpinner = false;
 
   constructor(private fb: FormBuilder, private postService: PostService, private authService: AuthService) {
     this.childForm = this.fb.group({
@@ -35,11 +36,16 @@ export class ChildComponent implements OnInit {
   }
 
   OnChild(){
+    this.showSpinner = true;
     this.postService.Child(this.childForm.value).subscribe(res => {
-      this.submitInfo = res.message;
-      this.alertMsg = true
-      this.socket.emit('refresh', {})
+      setTimeout(() => {
+        this.showSpinner = false;
+        this.submitInfo = res.message;
+        this.alertMsg = true
+        this.socket.emit('refresh', {})
+      }, 5000);
     }, err => {
+      this.showSpinner=false;
       if(err.error.message) {
         this.submitInfo = err.error.message;
         this.alertMsg = true

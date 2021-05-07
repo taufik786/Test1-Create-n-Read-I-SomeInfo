@@ -1,15 +1,19 @@
-li > a{
+.navbar{
+  padding: 0;
+}
+.navbar-nav{
+  padding-right: 120px;
+}
+.navbar .navbar-brand {
+  font-style: italic;
+}
+.navbar-nav .nav-link{
   color: white;
-  cursor: pointer;
-  padding: auto 30px;
-  font-size: 1.1rem;
-  display: block;
+  font-size: 17px;
+  padding: 14px 25px;
 }
-li a:hover{
-  color: black;
+.navbar-nav .nav-link:hover{
   background-color: tomato;
+  color: black;
 }
-.logout{
-  padding-left: 50px;
-  padding-right: 100px;
-}
+

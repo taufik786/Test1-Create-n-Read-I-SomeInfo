@@ -12,8 +12,9 @@ export class StateComponent implements OnInit {
   stateForm: FormGroup;
   submitInfo: any;
   alertMsg = false;
-  FetchedDta: any;
+  FetchedDta: [];
   socket: any;
+  showSpinner = false
 
   constructor(private postService: PostService) {
     this.socket = io('http://localhost:5000');
@@ -30,11 +31,16 @@ export class StateComponent implements OnInit {
   }
 
   createState(){
+    this.showSpinner = true
     this.postService.State(this.stateForm.value).subscribe(res => {
-      this.submitInfo = res.message;
-      this.alertMsg = true
-      this.socket.emit('refresh', {})
+      setTimeout(() => {
+        this.showSpinner = false
+        this.submitInfo = res.message;
+        this.alertMsg = true
+        this.socket.emit('refresh', {})
+      }, 6000);
     }, err => {
+      this.showSpinner = false
       if(err.error.message) {
         this.submitInfo = err.error.message;
         this.alertMsg = true

@@ -2,6 +2,10 @@
   <div class="col col-md-4 mt-5">
     <div class="card">
       <div class="add p-4">
+        <div class="d-flex align-items-center alert-success" *ngIf="showSpinner">
+          <strong class="p-2">Your District Is Adding....</strong>
+          <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
         <div
         *ngIf="alertMsg"
         class="alert alert-success alert-dismissible fade show"
@@ -35,4 +39,5 @@
       </div>
     </div>
   </div>
+  <p *ngIf="userDetails?.length <= 0">Don't have district</p>
 </div>

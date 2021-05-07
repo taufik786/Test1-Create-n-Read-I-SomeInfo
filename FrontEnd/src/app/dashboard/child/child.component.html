@@ -1,5 +1,9 @@
 <h3 class="pt-2 pb-2">Add Your Details</h3>
-<div class="col col-6">
+<div class="col col-md-6">
+  <div class="d-flex align-items-center alert-success" *ngIf="showSpinner">
+    <strong class="p-2">Your Details Is Saving....</strong>
+    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+  </div>
   <div
         *ngIf="alertMsg"
         class="alert alert-success alert-dismissible fade show"
@@ -40,26 +44,29 @@
   <hr class="hr-green" />
   <hr class="hr-blue" />
 </div>
-<div class="col row">
+<div class="row">
   <h5>Childs Details</h5>
-  <table class="table table-success table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">SI. No.</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Address</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of userDetails; let i=index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{item.name}}</td>
-        <td>{{item.email}}</td>
-        <td>{{item.phone}}</td>
-        <td>{{item.address}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-success table-hover">
+      <thead>
+        <tr>
+          <th scope="col">SI. No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userDetails; let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.address}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p *ngIf="userDetails?.length <= 0">Don't haave any child details</p>
 </div>

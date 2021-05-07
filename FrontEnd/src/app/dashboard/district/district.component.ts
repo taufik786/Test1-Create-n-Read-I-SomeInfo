@@ -13,8 +13,9 @@ export class DistrictComponent implements OnInit {
   districtForm: FormGroup;
   submitInfo: any;
   alertMsg = false;
-  userDetails: any;
+  userDetails: [];
   socket: any;
+  showSpinner = false;
 
   constructor(private authService: AuthService, private postService: PostService) {
     this.socket = io('http://localhost:5000');
@@ -33,11 +34,16 @@ export class DistrictComponent implements OnInit {
     if(this.districtForm.invalid) {
       return
     }
+    this.showSpinner = true
     this.postService.District(this.districtForm.value).subscribe(res => {
-      this.submitInfo = res.message;
-      this.alertMsg = true
-      this.socket.emit('refresh', {});
+      setTimeout(() => {
+        this.showSpinner = false;
+        this.submitInfo = res.message;
+        this.alertMsg = true
+        this.socket.emit('refresh', {});
+      }, 5000);
     }, err => {
+      this.showSpinner = false;
       if(err.error.message) {
         this.submitInfo = err.error.message;
         this.alertMsg = true

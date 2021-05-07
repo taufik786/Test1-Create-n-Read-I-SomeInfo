@@ -74,7 +74,6 @@ module.exports = {
 
   // All State
   getState(req,res) {
-    // Post.find({}, {"_id": 0}, ).select('state').then(data => {
     State.find({}).then(data => {
       res.status(200).json({message: 'All States', data})
     }).catch(err => {
