@@ -96,4 +96,20 @@ module.exports = {
       res.status(403).json({message: 'Error in states'})
     })
   },
+
+  // Delete child
+  DeleteChild(req, res) {
+    Child.deleteOne({_id: req.params.id, userId: req.user._id})
+    .then(result => {
+      console.log(result);
+      if(result.n > 0) {
+        res.status(200).json({message: 'Deletion Successfull!'});
+      } else {
+        res.status(401).json({message: 'Not Authorized'})
+      }
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Deleting post faild'})
+    });
+  }
 };

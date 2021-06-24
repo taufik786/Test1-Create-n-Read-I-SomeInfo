@@ -22,3 +22,13 @@ hr{
   border: none;
   border-radius: 5px;
 }
+.fa-edit{
+  color: green;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.fa-trash{
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

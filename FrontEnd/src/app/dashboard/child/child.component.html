@@ -47,6 +47,21 @@
 <div class="row">
   <h5>Childs Details</h5>
   <div class="table-responsive">
+    <div class="d-flex align-items-center alert-success mt-2 mb-3" *ngIf="showSpinner1">
+      <strong class="p-2">Child is deleting....</strong>
+      <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+    </div>
+    <div
+          *ngIf="alertMsg1"
+          class="alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          <strong>{{ deleteMsg }}</strong>
+          <button (click)="close1()"
+            type="button"
+            class="close"
+          >X</button>
+        </div>
     <table class="table table-success table-hover">
       <thead>
         <tr>
@@ -55,6 +70,7 @@
           <th scope="col">Email</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Address</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -64,9 +80,11 @@
           <td>{{item.email}}</td>
           <td>{{item.phone}}</td>
           <td>{{item.address}}</td>
+          <td><i class="fa fa-edit"></i> </td>
+          <td><i class="fa fa-trash" (click)="onDelete(item._id)"></i> </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p *ngIf="userDetails?.length <= 0">Don't haave any child details</p>
+  <p *ngIf="userDetails?.length <= 0">Don't have any child details</p>
 </div>

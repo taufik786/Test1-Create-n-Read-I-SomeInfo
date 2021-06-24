@@ -28,4 +28,7 @@ export class PostService {
   GetAllChild(): Observable<any>{
     return this.http.get(`${this.BASEURL}/child`)
   }
+  DeleteChild(postId: string): Observable<any>{
+    return this.http.delete(`${this.BASEURL}/child/` + postId)
+  }
 }

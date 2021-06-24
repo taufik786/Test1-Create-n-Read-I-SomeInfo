@@ -11,4 +11,6 @@ router.post('/state', checkAuth, PostController.createState);
 router.post('/district',checkAuth, PostController.createDistrict);
 router.post('/child',checkAuth, PostController.createChild);
 
+router.delete('/child/:id',checkAuth, PostController.DeleteChild);
+
 module.exports = router;
